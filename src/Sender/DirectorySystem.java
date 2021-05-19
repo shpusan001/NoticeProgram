@@ -68,7 +68,7 @@ class User implements DirectorySystem, Serializable {
 
     @Override
     public void sendNotice(String title, String notice) {
-        SendCommand command = new SendNoticeCommandFactory().createSendCommad();
+        SendCommand command = new SendNoticeCommandFactory().createSendCommad("SendNoticeCommand");
         command.setSendNoticePack(new SendNoticePack(id, title, notice));
         SendManager.getSendManager().addSendCommand(command);
     }

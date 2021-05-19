@@ -8,11 +8,11 @@ package Sender;
 /**
  * 전송 커맨드의 추상팩토리 클래스
  *
- * @추상팩토리 패턴
+ * @팩토리 패턴
  *
  * @author 이상훈
  */
 public interface SendCommandFactory {
 
-    public SendCommand createSendCommad();
+    public SendCommand createSendCommad(String what);
 }

@@ -14,8 +14,11 @@ package Sender;
 public class SendNoticeCommandFactory implements SendCommandFactory {
 
     @Override
-    public SendCommand createSendCommad() {
-        SendNoticeCommand command = new SendNoticeCommand();
+    public SendCommand createSendCommad(String what) {
+        SendCommand command = null;
+        if (what == "SendNoticeCommand") {
+            command = new SendNoticeCommand();
+        }
         return command;
     }
 }
