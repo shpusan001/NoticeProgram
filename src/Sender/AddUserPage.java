@@ -140,7 +140,7 @@ public class AddUserPage extends javax.swing.JFrame implements JFrameColor {
         if (isContent) {
             JOptionPane.showMessageDialog(null, "Same ID (number) exists", "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
         } else if (!id.matches("[+-]?\\d*(\\.\\d+)?")) {
-            JOptionPane.showMessageDialog(null, "Is not Number, Please only Number", "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "This is not Number, Please only Number", "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
         } else if (name.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Name is empty, please input name", "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -153,10 +153,8 @@ public class AddUserPage extends javax.swing.JFrame implements JFrameColor {
             }
         }
 
-        tf_id.setText(
-                "");
-        tf_userName.setText(
-                "");
+        tf_id.setText("");
+        tf_userName.setText("");
         tf_id.requestFocus();
 
         AdministratorPage.administratorPage.showDirectory(); // 리프레시

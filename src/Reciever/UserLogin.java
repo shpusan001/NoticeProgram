@@ -8,6 +8,7 @@ package Reciever;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  * @로그인 화면
@@ -89,13 +90,20 @@ public class UserLogin extends javax.swing.JFrame {
 
     private void btn_usrLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_usrLoginActionPerformed
         // TODO add your handling code here:
-        new UserPage().run(tf_id.getText());
+        if (!tf_id.getText().matches("[+-]?\\d*(\\.\\d+)?")) { // 숫자가 아니라면
+            JOptionPane.showMessageDialog(null, "This is not Number, Please only Number", "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
+        } else if (tf_id.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "This is empty, Please Write your Id", "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
+        } else {
+            new UserPage().run(tf_id.getText());
+            this.setVisible(false);
+        }
         try {
             Thread.sleep(500);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
-        this.setVisible(false);
+
     }//GEN-LAST:event_btn_usrLoginActionPerformed
 
     /**
