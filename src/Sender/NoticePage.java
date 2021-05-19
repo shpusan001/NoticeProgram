@@ -110,21 +110,26 @@ public class NoticePage extends javax.swing.JFrame implements JFrameColor {
 
     private void btn_sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sendActionPerformed
         // TODO add your handling code here:
-        if (AdministratorPage.administratorPage.selected != null
+        if (tf_title.getText().isEmpty() || tf_contents.getText().isEmpty()) { // 제목 또는 내용이 비어있다면
+            JOptionPane.showMessageDialog(null, "Title or Contents is empty, please write on empty thing", "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
+        } else if (AdministratorPage.administratorPage.selected != null
                 || !AdministratorPage.administratorPage.selected.isEmpty()) {
             Iterator<String> iterator = AdministratorPage.administratorPage.selected.iterator();
             while (iterator.hasNext()) {
                 String temp = iterator.next();
                 DirectoryManager.getDirectoryManager().getNow().getHashMap().get(temp).sendNotice(tf_title.getText(), tf_contents.getText());
             }
+            tf_title.setText("");
+            tf_contents.setText("");
         }
-        if (SqlController.getSqlController().sqlConnect()) { // sql연결확인
+
+        if (SqlController.getSqlController()
+                .sqlConnect()) { // sql연결확인
             SendManager.getSendManager().sendThreadStart(); // 메세지 명령처리 스레드 실행
         } else {
             JOptionPane.showMessageDialog(null, "Message delivery failed", "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
         }
-        tf_title.setText("");
-        tf_contents.setText("");
+
         tf_title.requestFocus();
     }//GEN-LAST:event_btn_sendActionPerformed
 

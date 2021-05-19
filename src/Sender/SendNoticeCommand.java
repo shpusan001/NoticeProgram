@@ -21,7 +21,7 @@ public class SendNoticeCommand extends SendCommand {
         //SendManager의 sendingUserList를 참조 해서 중복 방지 
         if (!sendingUserList.contains(pack.getId())) {
             sendingUserList.add(pack.getId());
-            pack.makeQuery(); // 메시지 전송
+            SqlController.getSqlController().sqlExcute(pack.makeQuery()); // sql 서버로 데이터 삽입 // 메시지 전송
         }
     }
 }

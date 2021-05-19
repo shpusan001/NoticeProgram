@@ -28,10 +28,10 @@ public class SendNoticePack {
         return id;
     }
 
-    public void makeQuery() {
+    public String makeQuery() {
         SimpleDateFormat currentTimeFormat = new SimpleDateFormat("yyyyMMdd");
         String date = currentTimeFormat.format(System.currentTimeMillis());
         String qeury = String.format("INSERT INTO Notices (date, id, title, content) VALUES ('%s', '%s', '%s', '%s');\n", date, id, title, notice);
-        SqlController.getSqlController().sqlExcute(qeury); // sql 서버로 데이터 삽입
+        return qeury;
     }
 }
