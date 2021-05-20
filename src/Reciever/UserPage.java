@@ -175,7 +175,13 @@ public class UserPage extends javax.swing.JFrame implements JFrameColor {
         // TODO add your handling code here:
         int select = list_title.getSelectedIndex();
         String content = LoadNoticeManager.getLoadNoticeManager().notices.get(select).getContent();
-        tp_content.setText(content);
+        String date = LoadNoticeManager.getLoadNoticeManager().notices.get(select).getDate();
+        String year = date.substring(0, 4);
+        String month = date.substring(3, 5);
+        String day = date.substring(5, 7);
+        date = year + "-" + month + "-" + day;
+        String result = "수신날짜:[" + date + "]\n" + content;
+        tp_content.setText(result);
     }//GEN-LAST:event_list_titleMousePressed
 
     private void mbtn_changeThemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mbtn_changeThemeActionPerformed
