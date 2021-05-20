@@ -46,12 +46,13 @@ public class LoadNoticeManager {
                         result.getString(3),
                         result.getString(4)
                 );
-                SqlController.getSqlController().sqlClose();
                 notices.add(notice);
                 noticesMap.put(notice.getTitle(), notice);
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            SqlController.getSqlController().sqlClose();
         }
     }
 }
