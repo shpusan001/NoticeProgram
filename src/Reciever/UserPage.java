@@ -180,7 +180,7 @@ public class UserPage extends javax.swing.JFrame implements JFrameColor {
         String month = date.substring(3, 5);
         String day = date.substring(5, 7);
         date = year + "-" + month + "-" + day;
-        String result = "수신날짜:[" + date + "]\n" + content;
+        String result = "게시날짜:[" + date + "]\n" + content;
         tp_content.setText(result);
     }//GEN-LAST:event_list_titleMousePressed
 

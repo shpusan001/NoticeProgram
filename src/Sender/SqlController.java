@@ -35,7 +35,7 @@ public class SqlController {
             //드라이버들이 읽히기만 하면 자동 객체가 생성되고 DriverManager에 등록된다.
 
             //2. mysql과 연결시키기
-            String url = "jdbc:mysql://101.101.211.178/JProj_msgProgram_db?useSSL=false";
+            String url = "jdbc:mysql://101.101.211.178/JProj_msgProgram_db?useSSL=false&allowMultiQueries=true";
 
             conn = DriverManager.getConnection(url, "root", "9760hm");
             return true;

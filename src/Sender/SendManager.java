@@ -23,12 +23,17 @@ public class SendManager {
     private Thread sendThread;
     private ArrayList<SendCommand> SendNoticeCommands = new ArrayList<SendCommand>(); // 메시지 전송 명령들
     private ArrayList<String> sendingUserList = new ArrayList<String>(); // 메시지 전송대상인 유저들  (메시지 중복 전송을 막기 위해 사용)
+    private StringBuilder qeurySum = new StringBuilder();
 
     public static SendManager getSendManager() {
         if (sendManager == null) {
             sendManager = new SendManager();
         }
         return sendManager;
+    }
+
+    public StringBuilder getQuerySum() {
+        return qeurySum;
     }
 
     public ArrayList<String> getSendingUserList() {
@@ -51,6 +56,8 @@ public class SendManager {
                 for (SendCommand sendCommand : SendNoticeCommands) {
                     sendCommand.excute();
                 }
+                SqlController.getSqlController().sqlExcute(qeurySum.toString());
+                qeurySum.setLength(0);
                 sendingUserList.clear();
                 SendNoticeCommands.clear(); // clear
                 JOptionPane.showMessageDialog(null, "Message delivery complete");
